@@ -28,6 +28,8 @@ SECRET_KEY = 'django-insecure-g+h#s+p8!=yz%(-0hp7bs&9c%2r^*=y65h%7mw!l2y^w1uuwf+
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://shaheerport-c0g6bfhte7afc9ea.eastus-01.azurewebsites.net']
+
 
 
 # Application definition
