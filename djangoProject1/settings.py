@@ -64,7 +64,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #
 # ]
 
-CORS_ALLOWED_ORIGINS=['*' "https://shaheerport-c0g6bfhte7afc9ea.eastus-01.azurewebsites.net",'shaeenhassan.com']
+# CORS_ALLOWED_ORIGINS=['*']
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
 
