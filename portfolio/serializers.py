@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Project, ProjectImage, ProjectVideo
+from .models import Category, Project, ProjectImage, ProjectVideo, Tag
 import cloudinary
 
 
@@ -14,10 +14,15 @@ class CategorySerializer(serializers.ModelSerializer):
         return obj.image.url
 
 
-class ProjectSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Project
-        fields = '__all__'
+# class ProjectSerializer(serializers.ModelSerializer):
+#     image_url = serializers.SerializerMethodField()
+#
+#     class Meta:
+#         model = Project
+#         fields = '__all__'
+#
+#     def get_image_url(self, obj):
+#         return obj.url.url
 
 
 class ProjectImageSerializer(serializers.ModelSerializer):
@@ -40,3 +45,23 @@ class ProjectVideoSerializer(serializers.ModelSerializer):
 
     def get_video_url(self, obj):
         return obj.video.url
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ['name', 'type', 'height', 'width']
+
+
+class ProjectSerializer(serializers.ModelSerializer):
+    url = serializers.SerializerMethodField()
+    tags = TagSerializer(many=True, read_only=True)
+    images = ProjectImageSerializer(many=True, read_only=True)
+    videos = ProjectVideoSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Project
+        fields = ['name', 'description', 'tags', 'images', 'videos','url']
+
+    def get_url(self, obj):
+        return obj.url.url

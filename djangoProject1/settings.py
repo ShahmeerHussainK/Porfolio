@@ -17,7 +17,6 @@ import cloudinary
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -25,15 +24,46 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-g+h#s+p8!=yz%(-0hp7bs&9c%2r^*=y65h%7mw!l2y^w1uuwf+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://shaheerport-c0g6bfhte7afc9ea.eastus-01.azurewebsites.net']
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-    'https://shaheerport-c0g6bfhte7afc9ea.eastus-01.azurewebsites.net',
-  
+
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'corsheaders',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'portfolio',
+    'cloudinary',
+    'cloudinary_storage'
 ]
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",
+#     "http://127.0.0.1:5173",
+#
+# ]
+
 
 CORS_ALLOW_METHODS = [
     'DELETE',
@@ -56,38 +86,6 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 ]
 
-
-# Application definition
-
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'portfolio',
-    'corsheaders',
-    'cloudinary',
-    'cloudinary_storage'
-]
-
-MIDDLEWARE = [
-
-    'corsheaders.middleware.CorsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
 ROOT_URLCONF = 'djangoProject1.urls'
 
 TEMPLATES = [
@@ -109,7 +107,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangoProject1.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -119,7 +116,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -139,7 +136,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -150,7 +146,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -163,7 +158,6 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 # CLOUDINARY_STORAGE = {
 #     'CLOUD_NAME': 'dzwdsxj7s',
 #     'API_KEY': '214753127877138',
@@ -171,8 +165,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # }
 
 cloudinary.config(
-    cloud_name = "dzwdsxj7s",
-    api_key = "214753127877138",
-    api_secret = "MnvdSbR-ar8wg52GO3U8I6yhkuQ", # Click 'View Credentials' below to copy your API secret
+    cloud_name="dzwdsxj7s",
+    api_key="214753127877138",
+    api_secret="MnvdSbR-ar8wg52GO3U8I6yhkuQ",  # Click 'View Credentials' below to copy your API secret
 )
-
