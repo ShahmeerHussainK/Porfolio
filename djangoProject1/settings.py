@@ -67,7 +67,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # CORS_ALLOWED_ORIGINS=['*']
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
-CSRF_TRUSTED_ORIGINS = ['https://shaheerport-c0g6bfhte7afc9ea.eastus-01.azurewebsites.net/']
+CSRF_TRUSTED_ORIGINS = ['https://shaheerport-c0g6bfhte7afc9ea.eastus-01.azurewebsites.net']
 
 CORS_ALLOW_METHODS = [
     'DELETE',
@@ -91,7 +91,9 @@ CORS_ALLOW_HEADERS = [
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    'https://shaeenhassan.com'
+    'https://shaeenhassan.com',
+    'https://shaheerport-c0g6bfhte7afc9ea.eastus-01.azurewebsites.net',
+
 ]
 
 ROOT_URLCONF = 'djangoProject1.urls'
