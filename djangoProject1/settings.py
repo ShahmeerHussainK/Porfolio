@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-g+h#s+p8!=yz%(-0hp7bs&9c%2r^*=y65h%7mw!l2y^w1uuwf+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -63,6 +63,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #     "http://127.0.0.1:5173",
 #
 # ]
+
+CORS_ALLOWED_ORIGINS=['*' "https://shaheerport-c0g6bfhte7afc9ea.eastus-01.azurewebsites.net",'shaeenhassan.com']
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 CORS_ALLOW_METHODS = [
